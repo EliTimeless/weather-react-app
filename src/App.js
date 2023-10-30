@@ -1,15 +1,17 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Weather from "./Weather";
+import Footer from "./Footer";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>Hello from weather!</h1>
-        <Weather city="Praha" />
-      </header>
+      <div className="container">
+        <div className="col m-3 p-4">
+          <Weather />
+        </div>
+        <div className="col"></div>
+      </div>
+      <Footer />
     </div>
   );
 }
