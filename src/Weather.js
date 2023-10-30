@@ -42,21 +42,44 @@ export default function Weather() {
   if (loaded) {
     return (
       <div>
-        <div className="weather-app">
+        <div className="weather-app m-2 p-4">
           {form}
-          <ul>
-            <li>Temperature: {Math.round(weather.temperature)}°C</li>
-            <li>Description: {weather.description}</li>
-            <li>Humidity: {weather.humidity}%</li>
-            <li>Wind: {weather.wind}km/h</li>
-            <li>
-              <img src={weather.icon} alt={weather.description} />
-            </li>
-          </ul>
+          <div className="row">
+            <div className="col-6 m-4 p-4">
+              <ul>
+                <li>Temperature: {Math.round(weather.temperature)}°C</li>
+                <li>Description: {weather.description}</li>
+                <li>Humidity: {weather.humidity}%</li>
+                <li>Wind: {weather.wind}km/h</li>
+                <li>
+                  <img src={weather.icon} alt={weather.description} />
+                </li>
+              </ul>
+            </div>
+            <div className="col-6 m-4 p-4">{city}</div>
+          </div>
         </div>
       </div>
     );
   } else {
-    return form;
+    return (
+      <div className="weather-app m-2 p-4">
+        {form}
+        <div className="row">
+          <div className="col-6 m-4 p-4">
+            <ul>
+              <li>Temperature: {Math.round(weather.temperature)}°C</li>
+              <li>Description: {weather.description}</li>
+              <li>Humidity: {weather.humidity}%</li>
+              <li>Wind: {weather.wind}km/h</li>
+              <li>
+                <img src={weather.icon} alt={weather.description} />
+              </li>
+            </ul>
+          </div>
+          <div className="col-6 m-4 p-4">{city}</div>
+        </div>
+      </div>
+    );
   }
 }

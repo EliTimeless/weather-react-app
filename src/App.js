@@ -6,10 +6,7 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <div className="col m-3 p-4">
-          <Weather />
-        </div>
-        <div className="col"></div>
+        <Weather />
       </div>
       <Footer />
     </div>
