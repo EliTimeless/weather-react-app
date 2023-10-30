@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { ColorRing } from "react-loader-spinner";
+import { InfinitySpin } from "react-loader-spinner";
 
 export default function Weather(props) {
   function handleResponse(response) {
@@ -15,15 +15,5 @@ export default function Weather(props) {
 
   axios.get(apiUrl).then(handleResponse);
 
-  return (
-    <ColorRing
-      visible={true}
-      height="80"
-      width="80"
-      ariaLabel="blocks-loading"
-      wrapperStyle={{}}
-      wrapperClass="blocks-wrapper"
-      colors={["#AC2DFF", "#FF2DEC", "#2D3DFF", "#AC2DFF", "#FF2DEC"]}
-    />
-  );
+  return <InfinitySpin width="200" color="#C559FF" />;
 }
