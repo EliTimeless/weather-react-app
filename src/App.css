@@ -1,18 +1,5 @@
 .App {
-  max-width: 700px;
-  max-height: 500px;
-  margin: 100px;
-  padding: 20px 20px;
-}
-
-.container {
-  background-color: #c8daff;
-  font-size: calc(10px + 2vmin);
-  color: rgb(0, 0, 0);
-  border: solid 2px rgb(129, 129, 247);
-  border-radius: 20px;
-}
-
-.App-link {
-  color: #61dafb;
+  max-width: 900px;
+  margin: 100px 100px;
+  padding: 50px 50px;
 }

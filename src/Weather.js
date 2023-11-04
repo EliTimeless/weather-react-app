@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "bootstrap/dist/css/bootstrap.css";
+import ReactAnimatedWeather from "react-animated-weather";
+import Forecast from "./Forecast";
 
-import "./App.css";
+import "./Weather.css";
 
 export default function Weather() {
   const [city, setCity] = useState("");
@@ -16,7 +19,9 @@ export default function Weather() {
       humidity: response.data.main.humidity,
       icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       description: response.data.weather[0].description,
+      city: response.data.name,
     });
+    console.log(response.data);
   }
 
   function handleSubmit(event) {
@@ -28,7 +33,6 @@ export default function Weather() {
 
   function updateCity(event) {
     event.preventDefault();
-
     setCity(event.target.value);
   }
 
@@ -39,46 +43,65 @@ export default function Weather() {
     </form>
   );
 
-  if (loaded) {
+  if (loaded === false) {
     return (
-      <div>
-        <div className="weather-app m-2 p-4">
-          {form}
-          <div className="row">
-            <div className="col-6 m-4 p-4">
+      <div className="Weather-app">
+        <div className="m-2 p-2">{form}</div>
+        <div className="container-sm">
+          <div className="row Weather m-2">
+            <div className="col-6">
+              <h1>{weather.city}</h1>
+              <h4> 8:33 4th November 2023 </h4>
+              <h4>Temperature: {Math.round(weather.temperature)}°C</h4>
+              <ReactAnimatedWeather
+                icon={"CLEAR_DAY"}
+                color={"black"}
+                size={40}
+                animate={true}
+              />
+            </div>
+            <div className="col-6">
               <ul>
-                <li>Temperature: {Math.round(weather.temperature)}°C</li>
                 <li>Description: {weather.description}</li>
                 <li>Humidity: {weather.humidity}%</li>
                 <li>Wind: {weather.wind}km/h</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <Forecast />
+      </div>
+    );
+  } else {
+    return (
+      <div className="Weather-app">
+        <div>{form}</div>
+        <div className="container-sm">
+          <div className="row Weather m-2">
+            <div className="col-6">
+              <h1>{weather.city}</h1>
+              <h4> 8:33 4th November 2023 </h4>
+              <h4>Temperature: {Math.round(weather.temperature)}°C</h4>
+              <ReactAnimatedWeather
+                icon={"CLEAR_DAY"}
+                color={"goldenrod"}
+                size={40}
+                animate={true}
+              />
+            </div>
+            <div className="col-6">
+              <ul>
+                <li>Humidity: {weather.humidity}%</li>
+                <li>Wind: {weather.wind}km/h</li>
+                <li>Description: {weather.description}</li>
                 <li>
                   <img src={weather.icon} alt={weather.description} />
                 </li>
               </ul>
             </div>
-            <div className="col-6 m-4 p-4">{city}</div>
           </div>
         </div>
-      </div>
-    );
-  } else {
-    return (
-      <div className="weather-app m-2 p-4">
-        {form}
-        <div className="row">
-          <div className="col-6 m-4 p-4">
-            <ul>
-              <li>Temperature: {Math.round(weather.temperature)}°C</li>
-              <li>Description: {weather.description}</li>
-              <li>Humidity: {weather.humidity}%</li>
-              <li>Wind: {weather.wind}km/h</li>
-              <li>
-                <img src={weather.icon} alt={weather.description} />
-              </li>
-            </ul>
-          </div>
-          <div className="col-6 m-4 p-4">{city}</div>
-        </div>
+        <Forecast />
       </div>
     );
   }
