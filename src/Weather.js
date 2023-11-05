@@ -50,7 +50,7 @@ export default function Weather() {
         <div className="container-sm">
           <div className="row Weather m-2">
             <div className="col-6">
-              <h1>{weather.city}</h1>
+              <h1>Prague</h1>
               <h4> 8:33 4th November 2023 </h4>
               <h4>Temperature: {Math.round(weather.temperature)}°C</h4>
               <ReactAnimatedWeather
